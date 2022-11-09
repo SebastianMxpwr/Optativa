@@ -12,7 +12,7 @@ window.addEventListener('load', function(){
         constructor(game){
             this.game = game;
             window.addEventListener('keydown', e => {
-                if(( (e.key === 'ArrowUp') || (e.key === 'ArrowDown') )&& this.game.keys.indexOf(e.key) === -1){
+                if(( (e.key === 'w') || (e.key === 's') )&& this.game.keys.indexOf(e.key) === -1){
                     this.game.keys.push(e.key);
                     }else if(e.key=== ' '){
                         this.game.player.shootTop();
@@ -37,7 +37,7 @@ window.addEventListener('load', function(){
             this.game = game;
             this.x = x;
             this.y = y;
-            this.width = 10;
+            this.width = 40;
             this.height = 4;
             this.speed = 3;
             this.markedForDeletion = false;
@@ -51,7 +51,7 @@ window.addEventListener('load', function(){
         }
 
         draw(context){
-            context.fillStyle = 'yellow';
+            context.fillStyle = 'aqua';
             context.fillRect(this.x, this.y, this.width, this.height);
         }
     }
@@ -62,7 +62,7 @@ window.addEventListener('load', function(){
         constructor(game){
             this.game = game;
             this.width = 120;
-            this.height = 190;
+            this.height = 400;
             this.x = 20;
             this.y = 100;
             this.speedY = 0;
@@ -75,9 +75,9 @@ window.addEventListener('load', function(){
         }
 
         update(){
-            if(this.game.keys.includes('ArrowUp')){
+            if(this.game.keys.includes('w')){
                 this.speedY = -this.maxSpeed;
-            }else if(this.game.keys.includes('ArrowDown')){
+            }else if(this.game.keys.includes('s')){
                 this.speedY = this.maxSpeed;
             }else{
                 this.speedY = 0;
@@ -124,7 +124,7 @@ window.addEventListener('load', function(){
             this.x = this.game.width;
             this.speedX = Math.random()*-1.5-0.5;
             this.markedForDeletion = false;
-            this.lives = 5;
+            this.lives = 1;
             this.score = this.lives;
             this.frameX=0;
             this.frameY=0
@@ -151,7 +151,7 @@ window.addEventListener('load', function(){
                 this.width, this.height,
                 this.x,this.y,
                 this.width, this.height);
-            context.font = '20px Helvetica';
+            context.font = '40px Roboto';
             context.fillText(this.lives, this.x, this.y);
         }
     }
@@ -195,7 +195,7 @@ window.addEventListener('load', function(){
             this.image = document.getElementById('lucky')
             this.frameY= Math.floor(Math.random()*2)
             this.lives=3;
-            this.score=15;
+            this.score=100;
             this.type='lucky'
         }
     }
@@ -253,8 +253,8 @@ window.addEventListener('load', function(){
         constructor(game){
             this.game = game;
             this.fontSize = 25;
-            this.fontFamily = 'Helvetica';
-            this.color = 'white';
+            this.fontFamily = 'Roboto';
+            this.color = 'red';
         }
 
         draw(context){
@@ -276,11 +276,11 @@ window.addEventListener('load', function(){
                 let message1;
                 let message2;
                 if(this.game.score > this.game.winningScore) {
-                    message1 = 'You Win!';
-                    message2 = 'Wel Done';
+                    message1 = 'Ganaste!';
+                    message2 = 'El mejor jugador';
                 } else {
-                    message1 = 'You Lose';
-                    message2 = 'Try Again';
+                    message1 = 'Perdiste ';
+                    message2 = 'por wey';
                 }
                 context.font = '50px ' + this.fontFamily;
                 context.fillText(message1, 

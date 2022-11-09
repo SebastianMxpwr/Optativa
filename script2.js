@@ -1,13 +1,26 @@
-//La funcion principal que al cargar, carga todas las funciones y clases 
+// const $app = document.getElementById('app';)
+// class Starship{
+//     constructor(){
+//         this.color= 'black';
+//         window.addEventListener('load',()=>{
+//             setTimeout((){
+//                 $app.innerHTML='<h5>${this.color}</5>';
+//             }
+
+//         )})
+//     }
+// // }
+
+// const fruits=['blackberry','apple'];
+// fruits.splice(0,0,'mango')
+// console.log(fruits)
+
 window.addEventListener('load', function(){
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
     canvas.width = 500;
     canvas.height = 500;
 
-    //esta clase esta al pendiente si se oprimen diferentes teclas
-    //las teclas que espera son las direccionales arriba, abajo y le teccla de espacio que sirven para mover el personaje 
-    //ademas de la tecla d para quitar o poner el modo debug
     class InputHandler{
         constructor(game){
             this.game = game;
@@ -30,8 +43,7 @@ window.addEventListener('load', function(){
             });
         }
     }
-
-    //esta clase lo que hace es crear rectangulos que aqui los llamamos projectiles 
+    
     class Projectile{
         constructor(game, x, y){
             this.game = game;
@@ -56,8 +68,7 @@ window.addEventListener('load', function(){
         }
     }
 
-    // esta clase crea al player donde indicamos la velocidad del personaje ademas de agregar los proyectiles
-    // ademas de poner la imagen y colocarle la velocidad de frames
+
     class Player{
         constructor(game){
             this.game = game;
@@ -116,8 +127,6 @@ window.addEventListener('load', function(){
         }
     }
 
-    //esta clase lo que hca es generalizar los enemigos que aparacen dando una base para los mismos
-    //asi como las vidas la velocidad ademas de colocar una imagen aleatoria 
     class Enemy {
         constructor(game) {
             this.game = game;
@@ -156,8 +165,6 @@ window.addEventListener('load', function(){
         }
     }
 
-    //este es un enemigo de los 3 que hay, depende de la clase de enemy ademas de que agregamos
-    //daatos mas especificos como su tamaño y la velocidad de movimiento asi como las vidas
     class Angler1 extends Enemy {
         constructor(game) {
             super(game);
@@ -170,8 +177,6 @@ window.addEventListener('load', function(){
         }
     }
 
-    //este es un enemigo de los 3 que hay, depende de la clase de enemy ademas de que agregamos
-    //daatos mas especificos como su tamaño y la velocidad de movimiento asi como las vidas
     class Angler2 extends Enemy {
         constructor(game) {
             super(game);
@@ -182,10 +187,8 @@ window.addEventListener('load', function(){
             this.frameY= Math.floor(Math.random()*2)
             this.lives=3;
         }
-    }   
+    }
 
-    //este es un enemigo de los 3 que hay, depende de la clase de enemy ademas de que agregamos
-    //daatos mas especificos como su tamaño y la velocidad de movimiento asi como las vidas
     class Lucky extends Enemy {
         constructor(game) {
             super(game);
@@ -200,8 +203,6 @@ window.addEventListener('load', function(){
         }
     }
 
-    //esta clase lo unico que hace es inicilizar el fondo sin embargo elfondo esta dividido en 4 layers
-    //y esta clase nos aayuda a inicilizar las4
     class Layer {
         constructor(game, image, speedModifier) {
             this.game = game;
@@ -224,7 +225,6 @@ window.addEventListener('load', function(){
         }
     }
 
-    //en esta clase colocamos las 4 layers y le decimos que son parte de la clase layer
     class Background {
         constructor(game) {
             this.game = game;
@@ -248,7 +248,6 @@ window.addEventListener('load', function(){
         }
     }
 
-    //lo que hace es mostrar el ui osea los datos para el usuario como lo son las balas el tiempo y saber si perdiste o no 
     class UI{
         constructor(game){
             this.game = game;
@@ -295,7 +294,6 @@ window.addEventListener('load', function(){
         }
     }
 
-    //incializa el juego
     class Game{
         constructor(width, height){
             this.width = width;
